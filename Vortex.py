@@ -70,7 +70,7 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 # === Configuration ===
 CSV_URL = "https://raw.githubusercontent.com/MrHacker274/Vortex/main/Member.csv"
 BOT_TOKEN = "7697054311:AAFfRUW-ImoGGB1weCB_j_Je0C2k05ywzaw"
-ADMIN_CHAT_ID = 5851767478
+ADMIN_CHAT_ID = 8406352768
 user_last_used = {}
 
 # ===== Helper: Format Time Left =====
@@ -1072,67 +1072,71 @@ def fetch_instagram_info(username):
 
         user = VortexInstaloader(user_id)
         if not isinstance(user, dict):
-            return f"❌ Failed to fetch Instagram data for {username}."   
+            return f"❌ Failed to fetch Instagram data for {username}."
+        if "error" in user:
+            return f"❌ Error fetching Instagram data for {username}: {user['error']}"
         cookies = {
-            'datr': 'GAgjaB5R_liEM-dpATRTgjMj',
-    'ig_did': '114B8FDB-7673-4860-A1D8-E88C655B9DD8',
-    'dpr': '0.8999999761581421',
-    'ig_nrcb': '1',
+    'datr': 'iofnaBnTpIne0Og4RrgYC_hG',
+    'ig_did': '39D7F855-E6ED-43C5-9AD8-0F33FC47FAD7',
+    'mid': 'aOeHigALAAEyWcF7_-w_-Rrnmm3X',
+    'dpr': '1.5',
     'ps_l': '1',
     'ps_n': '1',
-    'mid': 'aDaRiAALAAFk8TVh8AGAIMVtWO_F',
-    'csrftoken': 'Pf0Us3q173jfLfTXAurrhCD8uY5KpFlf',
-    'ds_user_id': '5545662104',
-    'wd': '1160x865',
-    'sessionid': '5545662104%3ATSmn4hQ082l5P1%3A2%3AAYeQ5pha0r0CduSqWWdx-J-iI_YWC41j8da3rjAR3lo',
-    'rur': '"CCO\\0545545662104\\0541782279503:01fea166733914c2af0bd2ddb58d6b202d60cf0ef7ca6381f718358923d095df7c8990f6"',
-        }
+    'csrftoken': '58gFne9FebWYs3NgYshC25dJp65rTfUv',
+    'ds_user_id': '5574743847',
+    'sessionid': '5574743847%3ATZIQdhUe0ZJaox%3A12%3AAYimshGahH6_cy-mdphBD34OT7itl7VIDHRoQ59MLA',
+    'rur': '"RVA\\0545574743847\\0541795195770:01fe9325b1c6966bfa7803a8b652d6f90bac289328f9ccc55bc118c7912837124b94b3cf"',
+    'wd': '725x557',
+    }
         headers = {
-           'accept': '*/*',
-    'accept-language': 'en-US,en;q=0.9',
+        'accept': '*/*',
+    'accept-language': 'en-US,en;q=0.5',
     'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
     'origin': 'https://www.instagram.com',
     'priority': 'u=1, i',
     'referer': f'https://www.instagram.com/{username}/',
-    'sec-ch-ua': '"Brave";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
-    'sec-ch-ua-full-version-list': '"Brave";v="137.0.0.0", "Chromium";v="137.0.0.0", "Not/A)Brand";v="24.0.0.0"',
+    'sec-ch-ua': '"Chromium";v="142", "Brave";v="142", "Not_A Brand";v="99"',
+    'sec-ch-ua-full-version-list': '"Chromium";v="142.0.0.0", "Brave";v="142.0.0.0", "Not_A Brand";v="99.0.0.0"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-model': '""',
     'sec-ch-ua-platform': '"Windows"',
-    'sec-ch-ua-platform-version': '"10.0.0"',
+    'sec-ch-ua-platform-version': '"19.0.0"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
     'sec-gpc': '1',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
-    }
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+    # 'cookie': 'datr=iofnaBnTpIne0Og4RrgYC_hG; ig_did=39D7F855-E6ED-43C5-9AD8-0F33FC47FAD7; mid=aOeHigALAAEyWcF7_-w_-Rrnmm3X; dpr=1.5; ps_l=1; ps_n=1; csrftoken=58gFne9FebWYs3NgYshC25dJp65rTfUv; ds_user_id=5574743847; sessionid=5574743847%3ATZIQdhUe0ZJaox%3A12%3AAYimshGahH6_cy-mdphBD34OT7itl7VIDHRoQ59MLA; rur="RVA\\0545574743847\\0541795195770:01fe9325b1c6966bfa7803a8b652d6f90bac289328f9ccc55bc118c7912837124b94b3cf"; wd=725x557',
+}
         params = {
-            'appid': 'com.bloks.www.ig.about_this_account',
+    'appid': 'com.bloks.www.ig.about_this_account',
     'type': 'app',
-    '__bkv': 'b029e4bcdab3e79d470ee0a83b0cbf57b9473dab4bc96d64c3780b7980436e7a',
+    '__bkv': 'e931ff03adc522742d788ba659da2ded4fb760f51c8576b5cd93cdaf3987e4b0',
+
         }
         data = {
-            '__d': 'www',
+        '__d': 'www',
     '__user': '0',
     '__a': '1',
-    '__req': '1m',
-    '__hs': '20263.HYP:instagram_web_pkg.2.1...0',
+    '__req': '2a',
+    '__hs': '20412.HYP:instagram_web_pkg.2.1...0',
     'dpr': '1',
-    '__ccg': 'EXCELLENT',
-    '__rev': '1024117973',
-    '__s': 't569sx:r98pok:86ey9k',
-    '__hsi': '7519376766333020397',
-    '__dyn': '7xeUjG1mxu1syUbFp41twWwIxu13wvoKewSAwHwNw9G2S7o2vwpUe8hw2nVE4W0qa0FE2awgo9oO0n24oaEnxO1ywOwv89k2C1Fwc60D87u3ifK0EUjwGzEaE2iwNwmE7G4-5o4q3y1Sw62wLyESE7i3vwDwHg2cwMwrUdUbGwmk0zU8oC1Iwqo5p0OwUQp1yUb8jK5V8aUuwm8jxK2K2G0EoK9x60hK78apEaU',
-    '__csr': 'ghT1Rsbjs9HlON_Szl94hd_lcDRbZjYKABlaAbh-TEJGp25la8h9rh4UKZQ-CUya_l6VtoNeGeqnyAqUBepy8CdLKjih4rGExoPlaV95zk2iq9xGiiXGeGmqmm4UKV8WmihLKi5rDXul5hmaKbGl28jAV9FrGX-haqmUC6Q6VEjwxwEAUsQfzGACAg01jVk0dvA80GE5C3e1jDwTwmcgfmi5bbobQ1jxaC0DUGp04Lw9Ol28lBKU0Mi07b85q420dqfwVw46wuQ5zwbO0V8lCgOu26qta4A5tCwdylQ0r3a0wJ3oR0aO0FEeE0_i0_E07JG04YE0sIw',
-    '__hsdp': 'g40JBkl4El5ML8Ok92OzegQqNq0PstvAr23db4yn5EN8iQmgu4Gi4Bg8S3Ca52AayUigog4h15BwEwJxi5eUEE9oiwDqFp69hp8Ocwj8C1ryZ3He7UfU9oS6poswvEtz8oCzURp-4o523e0VV81F822y87208-xm1sx60J85u1jwtE2lzE33a7U8k0VrwlU5C4omgeh02CwMwGwjo52',
-    '__hblp': '4zU4K3a1ExLU9WwmU8oiDz8jV8lwiE25Bxyh1x4K3mjzEW15CCBypU_ByAjwgrxKmUN5ABCCBxO2-9zXwkUWE9-3_xzDgSUlBG6o6u4WxS8Kfz8izFGo-15z8cU3DAwIwPwjoW2u1ywmU7h38yfBwmE7a1JzHw8y0woaolxm19yAq4orwiU4O1nwjXwtE2lzE5a1Ma7U8k11xi3m1jAJ0lE8EdFoK4Wm3n41G9K2e2F0JyU98aE4i8glx62u',
+    '__ccg': 'MODERATE',
+    '__rev': '1030170101',
+    '__s': '9lwkbc:r176an:uve90i',
+    '__hsi': '7574860462917675631',
+    '__dyn': '7xeUjG1mxu1syaxG4Vp41twWwIxu13wvoKewSAwHwNw9G2Saxa0DU6u3y4o0B-q1ew6ywMwto2awgo9oO0n24oaEnxO1ywOwv89k2C1Fwc60AEC1lwxwQzXw8W58jwGzEaE2iwNwmE7G4-5o4q3y261kx-0ma2-azqwt8d-2u2J08O321LwTwKG1pg2fwxyo6O1FwlA3a3zhAq4rwIDyXxui2qiUqwm8jxK2K2G0EoKmUhw4rxOi6oGq2K13AwhE98',
+    '__csr': 'glMvNYAj4__4Oh4Al2adIBq9qmT9f5n6FWWVCACltOCBBLgyi9ij8Ganiy4iFFGdOeBC8KiiLq4iOkhqLqV5mh97x29jmbKhBGp2Ft298K8BKi4GypqHyAtkdhlhkykVbyGAzpqABBVKSmlfAWRykHHXG8Qu8KqjADAFkpa57mQeyAVAaV94LVmcK_LFqKGzeECFEGm4FHHBUlhp8HLDjxiaUoG58kAxqayK0jO0KQh0BAxu00lHi6UpaNm4A2kx-0lCXxu18F0qozGA685i1oxvAQh0fyE26c0IzacAXQ68520Wk0CEEl4adBxl0HwebpEEk5UC2y0Ho2dw4v-3B0Hzyxe0wocAq8oGu68ow9G0Eo3fgJfoC046Cfw69BwgEnyYhxx165S0wCVZ0WBw9-15Dyo1DFtn8685CE56vgaoiwgU3t8Ejw9e0IaAzA5Iw32wde630XggyU0Uu8wiobUybw5wwTwqobUpBg98LzUy5U7d0SwhU2hypo6601ylw66g3owXzVrZqyFtw4RzA0TS09MwUyaw2AJobUcQmA0cIw1o2jVo3vwro6-ju2O',
+    '__hsdp': 'g57mMpMi5gy2IAOEBhGF5I4v8hZ11OHFTIoxxMz5Hf2x2hgwObn8xN4watQxSx4kMkEqCVy2y22pjBiy98Jz89EoF5HBG1r87ovyEjCBxJzEsgOEb8ynj4ob87K1FKUW1axG0KUcVo5C1eDxJ2ax2qaCxOdwBwSCxJa0FU0YKE1b8ow_wnU3PwopU1AoO1AxC0HUO0pG0NU3zw6HwdB04PwlE4a1m80NE2dg',
+    '__hblp': '0uXwgU2kDh8gwIxq5FU4GaDQ5Fo-1-BwooiyWxGV-cxLy8TVF9tBCwByEKfybx52VEgDxiEinUoAGm2GE9pEKFEy27CUauaAzEgxqF6dWz8WbyUgDybKjDgvDx2aByoyvQVo7G2mbwyx1Kq4FEK6pqyoO7oKEgKu6Q8GEN6yFEszoS4XzU9Gix-mU8bKlaUep89U4G5e8w4pw44wXG3S1uwjUlG2K4t09a1lG68gzV8pzEaUlzEe82Bxi1qCDwoE6C8wHxam1Sz84e225Gwzxm4oqwi8OdzU-5o2yxe0DU37xuq5UeUb8eoC0z8qxy0PoSex2dwxwn8lxO8g7y1MG262jAxd4zoK6V88UmG3qUr859EG2y7EaEb8C58aEkwKp8bQ',
+    '__sjsp': 'g57mYr1718l28aOjayl6GAmMhYx7Q47aKDuNy672cmIYa495238Jsxhp4wapkxGEh5c5a6FKowEwwCkVkEyibo66E2swHwIwoU',
     '__comet_req': '7',
-    'fb_dtsg': 'NAfuyfbUdgyvio7y7wmWgO9Cqcr6p8tshRS66er6RIGUhFLDO_-F0qg:17843671327157124:1748946019',
-    'jazoest': '26415',
-    'lsd': '7TEkhdM2sLVP1FrG6eymoZ',
-    '__spin_r': '1024117973',
+    'fb_dtsg': 'NAfumKzaroOxmfex0Yc5JEcvPbxFVQrlz3mqh-8qLGXAChc2VmoEvbQ:17843669410156967:1763659630',
+    'jazoest': '26573',
+    'lsd': '6YS1E7cGDOCvyY-y-sT-xx',
+    '__spin_r': '1030170101',
     '__spin_b': 'trunk',
-    '__spin_t': '1750741332',
+    '__spin_t': '1763659637',
     '__crn': 'comet.igweb.PolarisProfilePostsTabRoute',
     'params': f'{{"referer_type":"ProfileMore","target_user_id":{user_id} }}',
         }
@@ -1294,7 +1298,7 @@ def is_valid_username(username):
 from telegram import Update, ParseMode
 from telegram.ext import CallbackContext
 import time
-OWNER_ID = 5851767478  # 🔁 Replace with your actual Telegram ID
+OWNER_ID = 8406352768  # 🔁 Replace with your actual Telegram ID
 
 def status_command(update: Update, context: CallbackContext):
     if update.effective_user.id != OWNER_ID:
